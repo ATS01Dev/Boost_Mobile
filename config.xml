@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="io.ionic.conferenceapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Ionic Conference</name>
+<widget id="bj.ats.boost" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Boost </name>
   <description>
-        An Ionic Framework application for the Ionic Conference.
+       Ce t'application est devéloppé par #ATS
   </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="ats01groupe@gmail.com" href="http://ionicframework.com/">
+      ATS Team
   </author>
   <content src="index.html"/>
   <access origin="*"/>
