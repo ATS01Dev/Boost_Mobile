@@ -31,7 +31,7 @@
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
 
-    <ion-list #scheduleList [hidden]="shownSessions === 0">
+    <ion-list #scheduleList [hidden]="shownSessions === 0" *ngFor="let cours of playList">
         <ion-card>
             <img src="assets/img/nin-live.png" />
             <ion-card-content>
@@ -41,6 +41,8 @@
                 <p>
                     une description du tutoriel
                 </p>
+
+                <iframe width="100%" height="315" [src]="cours.urlVideo | videopipe" frameborder="0" allowfullscreen></iframe>
             </ion-card-content>
         </ion-card>
 

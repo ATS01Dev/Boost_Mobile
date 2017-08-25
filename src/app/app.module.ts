@@ -1,3 +1,4 @@
+import { VideopipePipe } from './../pipes/videopipe/videopipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -46,7 +47,8 @@ import { UserData } from '../providers/user-data';
     SpeakerListPage,
     TabsPage,
     TutorialPage,
-    SupportPage
+    SupportPage,
+    VideopipePipe
   ],
   imports: [
     BrowserModule,

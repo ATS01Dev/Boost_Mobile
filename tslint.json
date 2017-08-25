@@ -1,8 +1,10 @@
 {
-  "rulesDirectory": [
-    "node_modules/tslint-eslint-rules/dist/rules"
-  ],
-  "rules": {
-    "no-duplicate-variable": true
-  }
+    "rulesDirectory": [
+        "node_modules/tslint-eslint-rules/dist/rules"
+    ],
+    "rules": {
+        "no-duplicate-variable": true
+    },
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
 }

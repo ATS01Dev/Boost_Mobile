@@ -2,10 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 
 import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
 
-/*
-  To learn how to use third party libs in an
-  Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
-*/
 // import moment from 'moment';
 
 import { ConferenceData } from '../../providers/conference-data';
@@ -33,6 +29,7 @@ export class SchedulePage {
   shownSessions: any = [];
   groups: any = [];
   confDate: string;
+  playList : any = []; ;
 
   constructor(
     public alertCtrl: AlertController,
@@ -43,10 +40,28 @@ export class SchedulePage {
     public toastCtrl: ToastController,
     public confData: ConferenceData,
     public user: UserData,
-  ) {}
+  ) {
+  this.playList =[
+    { id :"",
+      title :"",
+      description : "",
+      urlVideo: "https://www.youtube.com/watch?v=2JeKfQ2r2r8"
+    },
+    { id :"",
+      title :"",
+      description : "",
+      urlVideo: ""
+    },
+    { id :"",
+      title :"",
+      description : "",
+      urlVideo: ""
+    }
+  ]
+  }
 
   ionViewDidLoad() {
-    this.app.setTitle('Schedule');
+    this.app.setTitle('Boost');
     this.updateSchedule();
   }
 
