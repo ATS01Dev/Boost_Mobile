@@ -1,3 +1,4 @@
+import { SchedulePage } from './../schedule/schedule';
 import { Component, ViewChild } from '@angular/core';
 
 import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
@@ -12,10 +13,10 @@ import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 
 
 @Component({
-  selector: 'page-schedule',
-  templateUrl: 'schedule.html'
+  selector: 'page-home',
+  templateUrl: 'home.html'
 })
-export class SchedulePage {
+export class HomePage {
   // the list is a child of the schedule page
   // @ViewChild('scheduleList') gets a reference to the list
   // with the variable #scheduleList, `read: List` tells it to return
@@ -29,7 +30,7 @@ export class SchedulePage {
   shownSessions: any = [];
   groups: any = [];
   confDate: string;
-  playList : any = []; ;
+  formateurList : any = []; ;
   play :any;
 
   constructor(
@@ -42,22 +43,31 @@ export class SchedulePage {
     public confData: ConferenceData,
     public user: UserData,
   ) {
-  this.playList =[
-    { id :"",
-      title :" Nom du tuoriel",
+  this.formateurList =[
+    { title :"Analyste programmeur",
+      name :" KOMACLO Jacque",
       description : " une description du tutoriel",
-      urlVideo: "https://www.youtube.com/watch?v=2JeKfQ2r2r8"
+      domaine: "Java, Mobile cross platform #Ionic 3, Angular 4, Informatique general",
+      imgUrl: "assets/img/profile/jac.jpg"
     },
-    { id :"",
-      title :"",
-      description : "",
-      urlVideo: ""
+    { title :"Developpeur",
+      name :" GNAGOLI Luckmann",
+      description : " une description du tutoriel",
+      domaine: "Java, HTML, CSS, Nodejs",
+      imgUrl: "assets/img/profile/franck.png"
     },
-    { id :"",
-      title :"",
-      description : "",
-      urlVideo: ""
-    }
+    { title :"Desengneur",
+      name :" MAHOUVI Paterne",
+      description : " une description du tutoriel",
+      domaine: "Photo shop, Web, Bootstrap 4",
+      imgUrl: "assets/img/appicon.png"
+    },
+    { title :"PHP Developpeur",
+      name :" GNANHOUEGNON Romario",
+      description : " une description du tutoriel",
+      domaine: "Frontent java script, php",
+      imgUrl: "assets/img/appicon.png"
+    },
   ]
 /*
  this.play : playCoursVideos[] =[{
@@ -103,6 +113,12 @@ export class SchedulePage {
 
     this.navCtrl.push(SessionDetailPage, { sessionId: sessionData.id, name: sessionData.name });
   }
+
+  goToCours(formateur: any) {
+
+     this.navCtrl.push(SchedulePage,formateur);
+  }
+
 
   addFavorite(slidingItem: ItemSliding, sessionData: any) {
 
@@ -183,7 +199,7 @@ export class SchedulePage {
         refresher.complete();
 
         const toast = this.toastCtrl.create({
-          message: 'Sessions have been updated.',
+          message: 'Actualisation terminer',
           duration: 3000
         });
         toast.present();
@@ -191,9 +207,4 @@ export class SchedulePage {
     });
   }
 }
-export interface  playCoursVideos {
-  id?: number;
-  title : string,
-  description?: string,
-  urlVideo: string
-}
+

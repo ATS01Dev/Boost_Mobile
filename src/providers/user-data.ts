@@ -1,3 +1,4 @@
+import { UserOptions } from '../interfaces/user-options';
 import { Injectable } from '@angular/core';
 
 import { Events } from 'ionic-angular';
@@ -30,15 +31,16 @@ export class UserData {
     }
   };
 
-  login(username: string): void {
+  login(user:UserOptions): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username);
+    this.setUsername(user.username);
     this.events.publish('user:login');
   };
 
-  signup(username: string): void {
+  signup(user:UserOptions ): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username);
+    this.storage.set("users",user);
+    this.setUsername(user.username);
     this.events.publish('user:signup');
   };
 

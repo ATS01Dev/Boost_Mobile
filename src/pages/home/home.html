@@ -4,14 +4,17 @@
       <ion-icon name="menu"></ion-icon>
     </button>
 
-        <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
+        <!--  <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
             <ion-segment-button value="all">
                 Tous les cours
             </ion-segment-button>
             <ion-segment-button value="favorites">
                 Favorites
             </ion-segment-button>
-        </ion-segment>
+        </ion-segment> -->
+        <ion-title>
+            Formateurs
+        </ion-title>
 
         <ion-buttons end>
             <button ion-button icon-only (click)="presentFilter()">
@@ -40,21 +43,15 @@
             <ion-option value="seattle">Electronique </ion-option>
         </ion-select>
     </ion-item>
-    <ion-list #scheduleList [hidden]="shownSessions === 0" *ngFor="let cours of playList">
-        <ion-card>
-            <!-- <img src="assets/img/nin-live.png" /> -->
-            <ion-card-content>
-                <ion-card-title>
-                    {{cours.title}}
-                </ion-card-title>
-                <p>
-                    {{cours.description}}
-
-                </p>
-
-                <iframe width="100%" height="315" [src]="cours.urlVideo | videopipe" frameborder="0" allowfullscreen></iframe>
-            </ion-card-content>
-        </ion-card>
+    <ion-list *ngFor="let f of formateurList">
+        <ion-item (click)="goToCours(f)">
+            <ion-avatar item-left item-right>
+                <img [src]="f.imgUrl" width="80" height="80" class="custumImg">
+            </ion-avatar>
+            <h2>{{f.name}} </h2>
+            <p>{{f.title}} </p>
+            <p>#{{f.domaine}} </p>
+        </ion-item>
 
         <!--  <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
 
