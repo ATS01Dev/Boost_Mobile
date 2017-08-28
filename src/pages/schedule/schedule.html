@@ -42,17 +42,30 @@
     </ion-item>
     <ion-list #scheduleList [hidden]="shownSessions === 0" *ngFor="let cours of playList">
         <ion-card>
-            <!-- <img src="assets/img/nin-live.png" /> -->
+
             <ion-card-content>
                 <ion-card-title>
                     {{cours.title}}
+                    <!-- <span class="customprix " [ngClass]="{'gratuit': !type(cours.types), 'payant': type(cours.types) }"> {{cours.types}}</span> -->
+                    <button ion-button outline class="customprix " [ngClass]="{'gratuit': !type(cours.types), 'payant': type(cours.types) }">{{cours.types}}</button>
+                    <button [hidden]="showModePay" ion-button outline class="customprix customButton" (click)="showModePays() ">{{showTextButon(cours.types)}} </button>
+                    <ion-item [hidden]="!showModePay">
+                        <ion-label>Mode de payement</ion-label>
+                        <ion-select [(ngModel)]="modeP" (ngModelChange)="ionSelectChange($event) ">
+                            <ion-option value="Mobile Monney">Mobile Monney</ion-option>
+                            <ion-option value="Moov Monney">Moov Monney</ion-option>
+                            <ion-option value="PayPal">PayPal</ion-option>
+                        </ion-select>
+                    </ion-item>
                 </ion-card-title>
+
                 <p>
                     {{cours.description}}
 
-                </p>
 
-                <iframe width="100%" height="315" [src]="cours.urlVideo | videopipe" frameborder="0" allowfullscreen></iframe>
+                </p>
+                <img [src]="cours.urlImg" />
+                <!-- <iframe width="100%" height="315" [src]="cours.urlVideo | videopipe" frameborder="0" allowfullscreen></iframe> -->
             </ion-card-content>
         </ion-card>
 

@@ -43,7 +43,7 @@ export class ConferenceApp {
   appPages: PageInterface[] = [
     { title: 'Debutant', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
     { title: 'Avancé', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts' },
-    { title: 'A propos', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' }
+    { title: 'A propos', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 2, icon: 'information-circle' }
   ];
   loggedInPages: PageInterface[] = [
     { title: `Votre profile`, name: 'AccountPage', component: AccountPage, icon: 'person' },
@@ -71,7 +71,7 @@ export class ConferenceApp {
     this.storage.get('hasSeenTutorial')
       .then((hasSeenTutorial) => {
         if (hasSeenTutorial) {
-          this.rootPage = TabsPage;
+          this.rootPage = LoginPage;
         } else {
           this.rootPage = TutorialPage;
         }

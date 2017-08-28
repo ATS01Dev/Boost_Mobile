@@ -48,25 +48,29 @@ export class HomePage {
       name :" KOMACLO Jacque",
       description : " une description du tutoriel",
       domaine: "Java, Mobile cross platform #Ionic 3, Angular 4, Informatique general",
-      imgUrl: "assets/img/profile/jac.jpg"
+      imgUrl: "assets/img/profile/jac.jpg",
+      type :"Gratuit"
     },
     { title :"Developpeur",
       name :" GNAGOLI Luckmann",
       description : " une description du tutoriel",
       domaine: "Java, HTML, CSS, Nodejs",
-      imgUrl: "assets/img/profile/franck.png"
+      imgUrl: "assets/img/profile/prof luck.jpg",
+      type :"1000 F"
     },
     { title :"Desengneur",
       name :" MAHOUVI Paterne",
       description : " une description du tutoriel",
       domaine: "Photo shop, Web, Bootstrap 4",
-      imgUrl: "assets/img/appicon.png"
+      imgUrl: "assets/img/profile/p1.jpg",
+      type :"Gratuit"
     },
     { title :"PHP Developpeur",
       name :" GNANHOUEGNON Romario",
       description : " une description du tutoriel",
       domaine: "Frontent java script, php",
-      imgUrl: "assets/img/appicon.png"
+      imgUrl: "assets/img/profile/p3.jpg",
+      type :"1500 F"
     },
   ]
 /*
@@ -83,8 +87,7 @@ export class HomePage {
     this.app.setTitle('Boost');
     this.updateSchedule();
   }
-
-  updateSchedule() {
+ updateSchedule() {
     // Close any open sliding items when the schedule updates
     this.scheduleList && this.scheduleList.closeSlidingItems();
 

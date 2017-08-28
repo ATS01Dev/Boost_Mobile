@@ -31,6 +31,8 @@ export class SchedulePage {
   confDate: string;
   playList : any = []; ;
   play :any;
+  showModePay= false;
+  modeP:any;
 
   constructor(
     public alertCtrl: AlertController,
@@ -44,19 +46,25 @@ export class SchedulePage {
   ) {
   this.playList =[
     { id :"",
-      title :" Nom du tuoriel",
-      description : " une description du tutoriel",
-      urlVideo: "https://www.youtube.com/watch?v=2JeKfQ2r2r8"
+      title :"Gérez vos codes avec Git",
+      description : "Ces outils suivent l’évolution de vos fichiers <br> source et gardent les anciennes versions de chacun d’eux.",
+      urlVideo: "https://www.youtube.com/watch?v=2JeKfQ2r2r8",
+      types :"1000 F",
+      urlImg: 'assets/img/crs1.png'
     },
     { id :"",
-      title :"",
-      description : "",
-      urlVideo: ""
+      title :"comment coder",
+      description : "Quel éditeur utilisé en quel language pour bien coder ",
+      urlVideo: "",
+      types :"Gratuit",
+      urlImg: 'assets/img/nin-live.png'
     },
     { id :"",
-      title :"",
+      title :"Qu'est ce que le language JAVA",
       description : "",
-      urlVideo: ""
+      urlVideo: "",
+      types :"1000 F",
+      urlImg: ''
     }
   ]
 /*
@@ -73,7 +81,63 @@ export class SchedulePage {
     this.app.setTitle('Boost');
     this.updateSchedule();
   }
+  type(typecrs: any ): boolean{
+    if(typecrs == 'Gratuit'){
+      return true
+    }
+    return false;
+  }
+  showTextButon(typecrs: any ): string{
+    if(typecrs == 'Gratuit'){
+      return 'Voir'
+    } else
+    return 'Payer';
+  }
+  showModePays(){
+    this.showModePay= true;
+  }
+  presentPrompt(mode: any) {
+    let alert = this.alertCtrl.create({
+      title: `${mode} `,
+      inputs: [
+        {
+          name: 'Numéro de télephone',
+          placeholder: 'Numéro de télephone'
+        },
+        {
+          name: 'Mode de Passe',
+          placeholder: 'Mode de Passe',
+          type: 'password'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked' +data);
+          }
+        },
+        {
+          text: 'Valider',
+          handler: data => {
+            /* if (data.username != null ||  data.password != null) {
 
+            } else {
+              // invalid logi
+              return false;
+            } */
+            console.log(`numero ${data.username} mot de passe ${data.password} `)
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+  ionSelectChange(){
+    this.presentPrompt(this.modeP);
+
+  }
   updateSchedule() {
     // Close any open sliding items when the schedule updates
     this.scheduleList && this.scheduleList.closeSlidingItems();
