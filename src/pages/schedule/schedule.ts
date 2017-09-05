@@ -1,3 +1,4 @@
+import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { Component, ViewChild } from '@angular/core';
 
 import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
@@ -43,6 +44,7 @@ export class SchedulePage {
     public toastCtrl: ToastController,
     public confData: ConferenceData,
     public user: UserData,
+    private stremingMedia: StreamingMedia
   ) {
   this.playList =[
     { id :"",
@@ -55,11 +57,11 @@ export class SchedulePage {
     { id :"",
       title :"comment coder",
       description : "Quel éditeur utilisé en quel language pour bien coder ",
-      urlVideo: "",
+      urlVideo: "https://www.youtube.com/watch?v=7PxcAlyA2BU",
       types :"Gratuit",
       urlImg: 'assets/img/nin-live.png'
     },
-    { id :"",
+    { id :"https://www.youtube.com/watch?v=7PxcAlyA2BU",
       title :"Qu'est ce que le language JAVA",
       description : "",
       urlVideo: "",
@@ -254,10 +256,15 @@ export class SchedulePage {
       }, 1000);
     });
   }
-}
-export interface  playCoursVideos {
-  id?: number;
-  title : string,
-  description?: string,
-  urlVideo: string
-}
+// custome jouer la video
+  PlayVideo(video: any){
+    let option: StreamingVideoOptions = {
+      successCallback: () => {console.log("start ")},
+      errorCallback:() => {console.log("error")},
+      orientation: 'portrait'
+      }
+      this.stremingMedia.playVideo(video,option);
+    }
+
+  }
+

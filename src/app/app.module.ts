@@ -1,3 +1,4 @@
+
 import { HomePage } from './../pages/home/home';
 import { VideopipePipe } from './../pipes/videopipe/videopipe';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,6 +30,8 @@ import { SupportPage } from '../pages/support/support';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
+//custom provider
+import { StreamingMedia } from '@ionic-native/streaming-media';
 
 
 @NgModule({
@@ -96,7 +99,8 @@ import { UserData } from '../providers/user-data';
     ConferenceData,
     UserData,
     InAppBrowser,
-    SplashScreen
+    SplashScreen,
+    StreamingMedia
   ]
 })
 export class AppModule { }
