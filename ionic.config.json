@@ -1,8 +1,12 @@
 {
-  "name": "Boost_Mobile",
-  "app_id": "",
-  "type": "ionic-angular",
-  "integrations": {
-    "cordova": {}
-  }
+    "name": "Boost_Mobile",
+    "app_id": "",
+    "type": "ionic-angular",
+    "integrations": {
+        "cordova": {}
+    },
+    "proxies": [{
+        "path": "/api/",
+        "proxyUrl": "http://localhost:8090"
+    }]
 }

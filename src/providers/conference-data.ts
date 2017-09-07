@@ -23,6 +23,9 @@ export class ConferenceData {
         .map(this.processData, this);
     }
   }
+  getVideo(){
+  return this.http.get("http://localhost:8090/video").map(res=> res.json() );
+  }
 
   processData(data: any) {
     // just some good 'ol JS fun with objects and arrays

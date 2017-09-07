@@ -1,3 +1,4 @@
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { Component, ViewChild } from '@angular/core';
 
@@ -33,6 +34,7 @@ export class SchedulePage {
   playList : any = []; ;
   play :any;
   showModePay= false;
+  videoUrl: SafeResourceUrl;
   modeP:any;
 
   constructor(
@@ -44,27 +46,30 @@ export class SchedulePage {
     public toastCtrl: ToastController,
     public confData: ConferenceData,
     public user: UserData,
-    private stremingMedia: StreamingMedia
+    private stremingMedia: StreamingMedia,
+    private domSanitizer: DomSanitizer
   ) {
+    this.videoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/aw5pMBeOWM0')
+
   this.playList =[
     { id :"",
       title :"Gérez vos codes avec Git",
       description : "Ces outils suivent l’évolution de vos fichiers <br> source et gardent les anciennes versions de chacun d’eux.",
-      urlVideo: "https://www.youtube.com/watch?v=2JeKfQ2r2r8",
+      urlVideo: "https://www.youtube.com/embed/_UM3I4lY448",
       types :"1000 F",
       urlImg: 'assets/img/crs1.png'
     },
     { id :"",
-      title :"comment coder",
-      description : "Quel éditeur utilisé en quel language pour bien coder ",
-      urlVideo: "https://www.youtube.com/watch?v=7PxcAlyA2BU",
+      title :"Cours informatique débutant",
+      description : "Cours informatique débutant - Partie 2 - Le menu demarrer ",
+      urlVideo: "https://www.youtube.com/embed/qOnyzImxBDw",
       types :"Gratuit",
       urlImg: 'assets/img/nin-live.png'
     },
-    { id :"https://www.youtube.com/watch?v=7PxcAlyA2BU",
+    { id :"Cours informatique débutant",
       title :"Qu'est ce que le language JAVA",
       description : "",
-      urlVideo: "",
+      urlVideo: "https://www.youtube.com/embed/zZv1wi9RRoU",
       types :"1000 F",
       urlImg: ''
     }
@@ -78,10 +83,19 @@ export class SchedulePage {
   ]; */
 
   }
+  getPlayList(){
+    this.confData.getVideo().subscribe(
+      (data :any) => {
+        data = this.play;
+        console.log(`play list ${this.play} dada ${data} `)
+      }
+    )
+  }
 
   ionViewDidLoad() {
     this.app.setTitle('Boost');
     this.updateSchedule();
+    this.getPlayList();
   }
   type(typecrs: any ): boolean{
     if(typecrs == 'Gratuit'){
@@ -257,13 +271,13 @@ export class SchedulePage {
     });
   }
 // custome jouer la video
-  PlayVideo(video: any){
+  PlayVideo(){
     let option: StreamingVideoOptions = {
       successCallback: () => {console.log("start ")},
       errorCallback:() => {console.log("error")},
       orientation: 'portrait'
       }
-      this.stremingMedia.playVideo(video,option);
+      this.stremingMedia.playVideo("http://localhost:8090/video/fish3.mp4",option);
     }
 
   }

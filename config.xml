@@ -7,7 +7,7 @@
     <author email="ats01groupe@gmail.com" href="http://ionicframework.com/">
       ATS Team
   </author>
-    <content original-src="index.html" src="http://192.168.25.103:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
